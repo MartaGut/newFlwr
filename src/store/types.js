@@ -1,0 +1,11 @@
+export const GET_FLOWERS = 'GET_FLOWERS';
+export const FLOWERS_ERROR = 'FLOWERS_ERROR';
+
+export const GET_SIGHTINGS = 'GET_SIGHTINGS';
+export const SIGHTINGS_ERROR = 'SIGHTINGS_ERROR';
+
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAIL = "REGISTER_FAIL";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT = "LOGOUT";
