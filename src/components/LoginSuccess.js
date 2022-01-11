@@ -2,8 +2,14 @@ import React, { useState } from "react";
 import { login } from "../store/actions/auth";
 import "../scss/modal.scss";
 import { useDispatch, useSelector } from "react-redux";
+import Register from "./Register";
 
-const myProfile = ({ show, close }) => {
+const LoginSucess = ({ show, close, openProfile }) => {
+
+    const userLoginSuccess = () => {
+        openProfile(true);
+        console.log(openProfile);
+    }
     
     return (
         <>
@@ -11,7 +17,7 @@ const myProfile = ({ show, close }) => {
           <div className="modalContainer" onClick={() => close()}>
            <div className="modal">
             <header className="modal_header">
-             <h2 className="modal_header-title">Hello MARTA!</h2>
+             <h2 className="modal_header-title">Login Success</h2>
              <button className="close" onClick={() => close()}>
               xxx
              </button>
@@ -20,8 +26,11 @@ const myProfile = ({ show, close }) => {
              This is modal content
             </main>
             <footer className="modal_footer">
-             <button className="modal-close" onClick={() => close()}>
-              Cancel
+             <button className="modal-close" onClick={userLoginSuccess}>
+         Profile
+             </button>
+             <button className="close">
+              OK
              </button>
             </footer>
            </div>
@@ -31,4 +40,4 @@ const myProfile = ({ show, close }) => {
        );
       };
 
-      export default myProfile;
+      export default LoginSucess;

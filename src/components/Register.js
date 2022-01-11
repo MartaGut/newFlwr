@@ -4,8 +4,9 @@ import  { useState } from "react";
 import { register } from "../store/actions/auth";
 import "../scss/modal.scss";
 import { useDispatch, useSelector } from "react-redux";
+import RegisterSuccess from "./RegisterSuccess";
 
-const Register = ({ show, close }) => {
+const Register = ({ show, close, openSuccess }) => {
     const dispatch = useDispatch();
 
     //  const user = useSelector(state => state.authReducer.initialStateUser);
@@ -20,15 +21,24 @@ const Register = ({ show, close }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
+    // const ToggleRegisterSuccesModal = () => {
+    //   close(false);
+    //   console.log(close);
+    //   openSuccess(true);
+    // };
+
     const handleRegister = (e) => {
         e.preventDefault();
         dispatch(register(first_name, last_name, date_of_birth, email, password));
+        close(false);
+        console.log(close);
+        openSuccess(true);
        }
 
        return (
         <>
          {show ? (
-          <div className="modalContainer" onClick={() => close()}>
+          <div className="modalContainer">
            <div className="modal">
             <header className="modal_header">
              <h2 className="modal_header-title">Register</h2>
@@ -88,9 +98,12 @@ const Register = ({ show, close }) => {
                value={password}
                onChange={(e) => { setPassword(e.target.value) }}
               />
-              <button type="submit" className="login-btn">
+              {/* <button type="submit" className="login-btn">
                Login to your Account
-              </button>
+              </button> */}
+
+              <button className="clickme" type="submit">Register</button>
+
              </form>
             </main>
             <footer className="modal_footer">

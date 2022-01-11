@@ -3,12 +3,13 @@ import { Redirect } from "react-router-dom";
 import authHeader from "../services/auth-header";
 import authReducer from "../store/reducers/authReducer";
 import authService from "../services/auth.service";
+import LoginSucess from "./LoginSuccess";
 
 import { login } from "../store/actions/auth";
 import "../scss/modal.scss";
 import { useDispatch, useSelector } from "react-redux";
 
-const Login = ({ show, close }) => {
+const Login = ({ show, close, loginSuccess }) => {
  const dispatch = useDispatch();
 
  const [email, setEmail] = useState("");
@@ -17,11 +18,15 @@ const Login = ({ show, close }) => {
 //  const ja = useSelector(state => state.users.user.auth_token);
 
 // 
-
+// const userLoginSuccess = () => {
+//     loginSuccess(true);
+// }
 
  const handleLogin = (e) => {
-  e.preventDefault();
-  dispatch(login(email, password));
+     e.preventDefault();
+     dispatch(login(email, password));
+     loginSuccess(true);
+     close(false);
  }
 
  
@@ -58,7 +63,7 @@ const Login = ({ show, close }) => {
          value={password}
          onChange={(e) => { setPassword(e.target.value) }}
         />
-        <button type="submit" className="login-btn">
+        <button className="login-btn" >
          Login
         </button>
         
