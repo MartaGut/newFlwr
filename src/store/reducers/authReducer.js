@@ -4,6 +4,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
+    SHOW_INFO
   } from "../types";
 
   const user = JSON.parse(localStorage.getItem('token'));
@@ -44,6 +45,10 @@ import {
             isLoggedIn: false,
             user: null,
           };
+          case SHOW_INFO: 
+          return {
+    
+          }
         default:
           return state;
       }

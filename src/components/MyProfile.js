@@ -1,9 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { login } from "../store/actions/auth";
 import "../scss/modal.scss";
 import { useDispatch, useSelector } from "react-redux";
+import userService from "../services/user.service";
+import { showInfo } from "../store/actions/auth";
+import authHeader from "../services/auth-header";
 
-const myProfile = ({ show, close }) => {
+const MyProfile = ({ show, close }) => {
+
+    // console.log('user from user', userService.getUser())
+
+const dispatch = useDispatch();
+
+const [id, setId] = useState("");
+
+const myInfo = useSelector(state => state);
+console.log('info', myInfo);
+
+useEffect(() => {
+    dispatch(showInfo(authHeader()));
+},[])
     
     return (
         <>
@@ -31,4 +47,4 @@ const myProfile = ({ show, close }) => {
        );
       };
 
-      export default myProfile;
+      export default MyProfile;

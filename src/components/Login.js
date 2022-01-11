@@ -1,13 +1,8 @@
-import React, { Component, useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
-import authHeader from "../services/auth-header";
-import authReducer from "../store/reducers/authReducer";
-import authService from "../services/auth.service";
-import LoginSucess from "./LoginSuccess";
+import React, { useState } from "react";
 
 import { login } from "../store/actions/auth";
 import "../scss/modal.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 
 const Login = ({ show, close, loginSuccess }) => {
  const dispatch = useDispatch();

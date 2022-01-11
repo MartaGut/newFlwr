@@ -3,10 +3,13 @@ import {
  REGISTER_FAIL,
  LOGIN_SUCCESS,
  LOGIN_FAIL,
- LOGOUT
+ LOGOUT,
+ SHOW_INFO,
 } from "../types";
 
 import authService from "../../services/auth.service";
+import authHeader from "../../services/auth-header";
+import userService from "../../services/user.service";
 
 
 
@@ -48,11 +51,6 @@ export const login = (email, password) => (dispatch) =>  {
   },
 
   (error) => {
-   const message =
-    (error.response && error.response.data && error.response.data.message) ||
-    error.message ||
-    error.toString();
-
    dispatch({
     type: LOGIN_FAIL,
    });
@@ -68,4 +66,18 @@ export const logout = () => (dispatch) => {
     dispatch({
       type: LOGOUT,
     });
+  };
+
+  export const showInfo = () => (dispatch) => {
+    return userService.getUser().then(
+      (data) => {
+
+        dispatch({
+          type: SHOW_INFO,
+          payload: {me: data}
+        });
+      console.log("data", data);
+       return Promise.resolve();
+      },
+    )
   };

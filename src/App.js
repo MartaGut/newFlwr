@@ -38,8 +38,6 @@ function App() {
 
           <LoginSucess  show={loginSuccessModal} title="My Modal" close={setLoginSuccessModal} openProfile={setShowProfile}/>
 
-          <MyProfile show={showProfile} close={setShowProfile}/>
-
           <button className="clickme" onClick={() => ToggleRegister()}>Register</button>
 
           <Register  show={RegisterModal} title="My Modal" close={setRegisterModal} openSuccess={setRegisterSucessModal}/>
